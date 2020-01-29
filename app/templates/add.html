@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Enter Walmart reciept data to process</h1>
+  <form method="post">
+    {{form.hidden_tag()}}
+    <p>{{form.store_id.label}} {{form.store_id()}}</p>
+    <p>{{form.purch_date.label}} {{form.purch_date()}}</p>
+    <p>{{form.card_type.label}} {{form.card_type()}}</p>
+    <p>{{form.total.label}} {{form.total()}}</p>
+    <p>{{form.last_four.label}} {{form.last_four()}}</p>
+    <p>{{form.submit()}}
+    {% for error in form.submit.errors %}
+    <br><span style="color: red;">{{ error }}</span>
+    {% endfor %}
+    </p>
+  </form>
+{% endblock %}

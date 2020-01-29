@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for receipt in receipt_data %}
+    <h1>{{ receipt.date }} - {{ receipt.store }}</h1>
+    <table cellspacing="5" cellpadding="10">
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+      </tr>
+      {% for item in receipt.receipt_items %}
+      <tr>
+        <td><img src="{{url_for('itemImage', file_name=item.image)}}" alt="" width="64" height="64"></td>
+        <td>{{item.name}}</td>
+        <td>{{'$%0.2f'|format(item.price)}}</td>
+        <td>{{item.category1}} - {{item.category2}} - {{item.category3}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endfor %}
+{% endblock %}
